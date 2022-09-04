@@ -80,3 +80,17 @@ LEFT JOIN disciplines d ON d.id = g.discipline
 LEFT JOIN teachers t ON t.id = d.teacher
 WHERE g.student = 12 and t.id = 2;
 11)
+SELECT DISTINCT s.student, t.teacher, round(avg(grade), 2) AS avg_grade
+FROM grades g
+LEFT JOIN students s ON s.id = g.student
+LEFT JOIN disciplines d ON d.id = g.discipline
+LEFT JOIN teachers t ON t.id = d.teacher
+WHERE g.student = 13 and t.id = 2
+GROUP BY s.student, t.teacher;
+12)
+SELECT DISTINCT t.teacher, round(avg(grade), 2) AS avg_grade
+FROM grades g
+LEFT JOIN disciplines d ON d.id = g.discipline
+LEFT JOIN teachers t ON t.id = d.teacher
+WHERE t.id = 2
+GROUP BY t.teacher;
